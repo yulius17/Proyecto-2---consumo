@@ -23,99 +23,128 @@ informacion = {
 
 costa = tot_coca_codo_g + tot_sopladora_g
 sierra = tot_sopladora_q + tot_coca_codo_q + tot_sopladora_l
-oriente = ('0')
+oriente = ('No existe una planta en el oriente')
 
-print("""
-    ===============================
-    ADMINISTRADOR MATRIZ ELECTRICA
-    ===============================
-    """)
-print('<1>. Total de MWh en Planta y Ciudad ')
-print('<2>. Total de energia dada ')
-print('<3>. Dinero Recaudado ')
-print('<4>. Escriba (salir) para Salir del programa')
-opcion = input('Elija la opción que desee emplear: ')
+print('''
+    ------------------------------
+          PLANTAS ENERGETICAS
+    ------------------------------
+    ''')
+print('(1). El total de Megavatios en Planta y Ciudad ')
+print('(2). El total de Energia por Ciudad ')
+print('(3). El dinero que recauda por Region ')
+print('(4). Escriba (salida) para Salir del programa')
+opcion = input('Escoja una opcion: ')
 
-if opcion == 'salir':
-    print('Saliendo...')
+if opcion == 'salida':
     exit
-    
+
+#1. Solicite al usuario el nombre de una planta y de una ciudad y presente el total de
+#megavatios de consumos para dicha ciudad en dicha planta.
 elif opcion == '1':
     
-    print("""
+    print('''
     ===============================
-    Total de MWh en Planta y Ciudad
+        EL TOTAL DE MEGAVATIOS
+               PLANTAS
+    Coca Codo Sinclair,Sopladora
+              CIUDADES
+    Guayaquil,Quito,Loja
     ===============================
-    """)
+    ''')
 
     n_planta = input('Ingrese el nombre de la planta: ')
 
-    if n_planta == 'Coca Codo Sinclair' or 'coca codo sinclair':
+    if n_planta == 'Coca Codo Sinclair':
         n_ciudad = input('Ingrese el nombre de la ciudad: ')
 
-        if n_ciudad == 'Quito' or 'quito':
-            print('Total de MWh de consumo en Coca Codo Sinclair, Quito: ', tot_coca_codo_q, 'Mwh')
+        if n_ciudad == 'Quito':
+            print('Total de Megavatios de consumo en Coca Codo Sinclair, Quito: ', tot_coca_codo_q, 'Megavatios')
             print('Con tarifa de: ', consumo_energia['Coca Codo Sinclair']['Quito']['tarifa'])
-        elif n_ciudad == 'Guayaquil' or 'guayaquil':
-            print('Total de MWh de consumo en Coca Codo Sinclair, Guayaquil: ', tot_coca_codo_g, 'Mwh')
+        elif n_ciudad == 'Guayaquil':
+            print('Total de Megavatios de consumo en Coca Codo Sinclair, Guayaquil: ', tot_coca_codo_g, 'Megavatios')
             print('Con tarifa de: ', consumo_energia['Coca Codo Sinclair']['Guayaquil']['tarifa'])
+        elif n_ciudad =='Loja':
+            print("No hay una planta de Coca Codo Sinclair en Loja")
     print()
 
-    if n_planta == 'Sopladora' or 'sopladora':
+    if n_planta == 'Sopladora':
         n_ciudad = input('Ingrese el nombre de la ciudad: ')
 
-        if n_ciudad == 'Quito' or 'quito':
-            print('Total de MWh de consumo en Sopladora, Quito: ', tot_sopladora_q, 'Mwh')
+        if n_ciudad == 'Quito':
+            print('Total de MMegavatios de consumo en Sopladora, Quito: ', tot_sopladora_q, 'Megavatios')
             print('Con tarifa de: ', consumo_energia['Sopladora']['Quito']['tarifa'])
-        elif n_ciudad == 'Guayaquil' or 'guayaquil':
-            print('Total de MWh de consumo en Sopladora, Guayaquil: ', tot_sopladora_g, 'Mwh')
+        elif n_ciudad == 'Guayaquil':
+            print('Total de Megavatios de consumo en Sopladora, Guayaquil: ', tot_sopladora_g, 'Megavatios')
             print('Con tarifa de: ', consumo_energia['Sopladora']['Guayaquil']['tarifa'])
-        elif n_ciudad == 'Loja' or 'loja':
-            print('Total de MWh de consumo en Sopladora, Loja: ', tot_sopladora_l)
+        elif n_ciudad == 'Loja':
+            print('Total de Megavatios de consumo en Sopladora, Loja: ', tot_sopladora_l)
             print('Con tarifa de: ', consumo_energia['Sopladora']['Loja']['tarifa'])
-    print()
+    else:
+        print("Digite correctamente la primera en mayuscula")
 
-    print('Presione cualquier tecla para salir')
     exit
+    
+
+    
+
+#2. Solicite al usuario el nombre de una ciudad y presente un nuevo diccionario cuyas claves
+#son los nombres de las plantas generadoras y el valor es el total megavatios que cada
+#planta le ha dado a ciudad. Si la planta no entrega energía a la ciudad entonces esa planta
+#no debería aparecer en el nuevo diccionario  
 elif opcion == '2':
-    print("""
-    ===============================
-    Total de energia dada a cada
-    ciudad por cada planta
-    ===============================
-    """),
+    print('''
+    
+    TOTAL DE ENERGIA DADA A CADA
+       CIUDAD POR CADA PLANTA
+               CIUDADES
+    Guayaquil
+    Quito
+    Loja
+    Ambato
+    Tena
+    Nueva loja
+    
+    '''),
 
     n_ciudad2 = input('Ingrese el nombre de la ciudad: ')
 
-    if n_ciudad2 == 'Guayaquil' or 'guayaquil':
-        print('Total de MWh, Coca Codo Sinclair: ', tot_coca_codo_g, 'Mwh')
-        print('Total de MWh, Sopladora:', tot_sopladora_g, 'Mwh')
-    elif n_ciudad2 == 'Quito' or 'quito':
-        print('Total de MWh, Coca Codo Sinclair: ', tot_coca_codo_q, 'Mwh')
-        print('Total de MWh, Sopladora:', tot_sopladora_q, 'Mwh')
-    elif n_ciudad2 == 'Loja' or 'loja':
-        print('Total de MWh, Sopladora:', tot_sopladora_l, 'Mwh')
+    if n_ciudad2 == 'Guayaquil':
+        print('Total de Megavatios, Coca Codo Sinclair: ', tot_coca_codo_g, 'Megavatios')
+        print('Total de Megavatios, Sopladora:', tot_sopladora_g, 'Megavatios')
+    elif n_ciudad2 == 'Quito':
+        print('Total de Megavatios, Coca Codo Sinclair: ', tot_coca_codo_q, 'Megavatios')
+        print('Total de Megavatios, Sopladora:', tot_sopladora_q, 'Megavatios')
+    elif n_ciudad2 == 'Loja':
+        print('Total de MMegavatios, Sopladora:', tot_sopladora_l, 'Megavatios')
     else:
         print('Ninguna planta otorga energía la ciudad seleccionada')
     print()
 
-    print('Presione cualquier tecla para salir')
     exit
+
+
+#3. Solicite el nombre de una región al usuario y presente cuento dinero ha recaudado la
+#región
 elif opcion == '3':
-    print("""
-    ===============================
-    $Dinero Recaudado$
-    ===============================
-    """),
+    print('''
+    -------------------------------
+         El DINERO RECAUDADO 
+              REGIONES
+    Costa
+    Sierra
+    Oriente
+    -------------------------------
+    '''),
 
     n_region = input('Ingrese nombre de Región: ')
 
-    if n_region == 'Costa' or 'costa':
+    if n_region == 'Costa':
         print('Total Recaudado en la Región Costa: ', costa, '$')
-    elif n_region == 'Sierra' or 'sierra':
+    elif n_region == 'Sierra':
         print('Total Recaudado en la Región Sierra: ', sierra, '$')
-    elif n_region == 'Oriente' or 'oriente':
-        print('Total Recaudado en el Oriente: ', oriente, '$')
-        
-    print('Presione cualquier tecla para salir')
+    elif n_region == 'Oriente':
+        print(oriente)
+    else:
+        print("Escriba correctamente la primera letra en mayuscula")
     exit
