@@ -13,28 +13,18 @@ consumo_energia = {
  },
 }
 
-informacion = {
+datos = {
     'Costa': ('Guayaquil', 'Manta'),
     'Sierra': ('Quito', 'Ambato', 'Loja'),
     'Oriente': ('Tena', 'Nueva Loja')
 }
 
-# new_region = input('Ingrese nueva región:')
-
-# new_cities = []
-# for new_city in range(2):
-#     new_cities.append(input('Ingrese ciudades'))
-
-informacion['Insular'] = ('Puerto Ayora', 'Puerto Villamil')
-
-# print(informacion)
-
 def total_por_region(region):
 
-    if region not in informacion.keys():
+    if region not in datos.keys():
         return 'region no existe'
 
-    ciudades_region = informacion[region]
+    ciudades_region = datos[region]
 
     total_consumo = 0
     for ciudad_region in ciudades_region:
@@ -46,12 +36,7 @@ def total_por_region(region):
     return total_consumo
 
 
-# print('Costa:',total_por_region('Costa'))
-# print('Sierra:',total_por_region('Sierra'))
-# print('Orinte:',total_por_region('Oriente'))
-# print('Insular:',total_por_region('Insular'))
 
-# print(sum(consumo_energia['Sopladora']['Guayaquil']['consumos'])+sum(consumo_energia['Coca Codo Sinclair']['Guayaquil']['consumos'])+sum(consumo_energia['Sopladora']['Manta']['consumos']))
 
 
 def total_consumo_por_planta_ciudad(planta, ciudad):
@@ -67,14 +52,14 @@ def total_consumo_por_planta_ciudad(planta, ciudad):
 op = -1
 while op != 0:
 
-    print('<1> Total de energía consumida por planta y ciudad')
-    print('<3> Total por región')
-    print('<0> Salir')
+    print('(1) Total de energía consumida por la planta y la ciudad')
+    print('(2) Total por cada región')
+    print('(0) Salir')
 
-    op = int(input('Ingrese opción:'))
+    op = int(input('Ingrese una opción:'))
 
     if op == 1:
-        planta = input('Ingrese el nombre de la planta (Coca Codo Sinclair, Sopladora):')
+        planta = input('Ingrese el nombre de la planta que necesita (Coca Codo Sinclair, Sopladora):')
         ciudad = input('Ingrese el nombre de la ciudad:')
 
         total = total_consumo_por_planta_ciudad(planta, ciudad)
@@ -84,20 +69,9 @@ while op != 0:
         else:
             print(total)
 
-    if op == 3:
-        region = input('Ingrese región:')
+    if op == 2:
+        region = input('Ingrese la región:')
         total = total_por_region(region)
-        print(region, ':', total, '\n')
+        print("la",region,'produce un total de:', total, '\n')
 
 
-# total_consumo = total_consumo_por_planta_ciudad(planta, ciudad)
-# print('El consumo de energía en la ciudad de {} fue de {} MWh en la planta {}'.format(ciudad, total_consumo, planta))
-
-# ciudad = 'Guayaquil'
-# total_consumo = total_consumo_por_planta_ciudad(planta, ciudad)
-# print('El consumo de energía en la ciudad de {} fue de {} MWh en la planta {}'.format(ciudad, total_consumo, planta))
-
-# print(total_consumo_por_planta_ciudad(planta, ciudad))
-
-# print(planta in consumo_energia.keys())
-# print(ciudad in consumo_energia[planta].keys())
