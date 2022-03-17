@@ -35,10 +35,6 @@ def total_por_region(region):
 
     return total_consumo
 
-
-
-
-
 def total_consumo_por_planta_ciudad(planta, ciudad):
     if planta not in consumo_energia.keys():
         return 'La planta ' + planta + ' no existe'
