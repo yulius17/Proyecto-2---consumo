@@ -158,7 +158,7 @@ elif opcion == '3':
     
     
     
-#proyecto funciones
+# proyecto funciones
 ```python
 consumo_energia = {
     'Coca Codo Sinclair':{
